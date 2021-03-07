@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Amplify from 'aws-amplify'
-import {
-  AmplifyAuthenticator,
-  AmplifySignIn,
-  AmplifySignOut,
-} from '@aws-amplify/ui-react'
+import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
 //
+import { NavigationContextProvider } from './contexts/NavigationContext'
+import { PrivateRouter } from './Routes'
+
 import { config } from './libs/amplify/config'
 
 Amplify.configure(config)
@@ -29,11 +27,9 @@ function App() {
     <>
       {/* Signed Pages */}
       <ThemeProvider theme={theme}>
-        <div className="App">
-          <div>Hello, {user.username}</div>
-          <Button variant="contained">Default</Button>
-          <AmplifySignOut />
-        </div>
+        <NavigationContextProvider>
+          <PrivateRouter />
+        </NavigationContextProvider>
       </ThemeProvider>
     </>
   ) : (
