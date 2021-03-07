@@ -10,7 +10,7 @@ export const DashboardPagePresenter: FC = () => {
   return (
     <Templates.BasicTemplate
       headerBar={<Organisms.HeaderBar />}
-      sidebar={<div>sidebar</div>}
+      sidebar={<Organisms.Sidebar state={{ currentMenu: 'HOME' }} />}
     >
       メインコンテンツ
     </Templates.BasicTemplate>
