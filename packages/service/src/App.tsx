@@ -6,10 +6,13 @@ import {
   AmplifySignOut,
 } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 //
 import { config } from './libs/amplify/config'
 
 Amplify.configure(config)
+const theme = createMuiTheme({})
 
 function App() {
   const [authState, setAuthState] = useState<any>(null)
@@ -23,14 +26,23 @@ function App() {
   }, [])
 
   return authState === AuthState.SignedIn && user ? (
-    <div className="App">
-      <div>Hello, {user.username}</div>
-      <AmplifySignOut />
-    </div>
+    <>
+      {/* Signed Pages */}
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <div>Hello, {user.username}</div>
+          <Button variant="contained">Default</Button>
+          <AmplifySignOut />
+        </div>
+      </ThemeProvider>
+    </>
   ) : (
-    <AmplifyAuthenticator>
-      <AmplifySignIn slot="sign-in" hideSignUp />
-    </AmplifyAuthenticator>
+    <>
+      {/* Unsigned */}
+      <AmplifyAuthenticator>
+        <AmplifySignIn slot="sign-in" hideSignUp />
+      </AmplifyAuthenticator>
+    </>
   )
 }
 
