@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 //
-import { DashboardContainer } from './containers'
+import { DashboardPageContainer } from './containers'
 
 export const PrivateRouter: FC = () => {
   //
   return (
     <Switch>
       <Route exact path={['/', '/dashboard']}>
-        <DashboardContainer />
+        <DashboardPageContainer />
       </Route>
       <Route exact path="/articles">
         <div>Article</div>

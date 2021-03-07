@@ -1,3 +1,2 @@
 import DashboardPageContainer from './DashboardPageContainer'
-
-export { DashboardPageContainer }
+export default DashboardPageContainer
