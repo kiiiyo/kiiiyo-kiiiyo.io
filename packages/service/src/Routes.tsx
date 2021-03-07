@@ -1,7 +1,12 @@
 import { FC } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 //
-import { DashboardPageContainer } from './containers'
+import {
+  DashboardPageContainer,
+  ArticleCollectionPageContainer,
+  CategoryCollectionPageContainer,
+  TagCollectionPageContainer,
+} from './containers'
 
 export const PrivateRouter: FC = () => {
   //
@@ -11,13 +16,13 @@ export const PrivateRouter: FC = () => {
         <DashboardPageContainer />
       </Route>
       <Route exact path="/articles">
-        <div>Article</div>
+        <ArticleCollectionPageContainer />
       </Route>
       <Route exact path="/categories">
-        <div>Categories</div>
+        <CategoryCollectionPageContainer />
       </Route>
       <Route exact path="/tags">
-        <div>Categories</div>
+        <TagCollectionPageContainer />
       </Route>
       <Route>
         <Redirect to="/" />

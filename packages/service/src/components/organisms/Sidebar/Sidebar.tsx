@@ -14,7 +14,7 @@ import {
  * Interface
  */
 
-export type CurrentMenuType = 'HOME' | 'USER' | 'CONTENT'
+export type CurrentMenuType = 'HOME' | 'ARTICLE' | 'CATEGORY' | 'TAG'
 
 export type MenuItemType = {
   name: string
@@ -122,6 +122,24 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       label: 'ホーム',
       path: `/`,
       icon: <Atoms.HomeIcon />,
+    },
+    {
+      name: 'ARTICLE',
+      label: '記事',
+      path: `/articles`,
+      icon: <Atoms.DescriptionIcon />,
+    },
+    {
+      name: 'CATEGORY',
+      label: 'カテゴリ',
+      path: `/categories`,
+      icon: <Atoms.FolderIcon />,
+    },
+    {
+      name: 'Tag',
+      label: 'タグ',
+      path: `/tags`,
+      icon: <Atoms.LocalOfferIcon />,
     },
   ]
 

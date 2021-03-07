@@ -1,0 +1,2 @@
+import ArticleCollectionPageContainer from './ArticleCollectionPageContainer'
+export default ArticleCollectionPageContainer

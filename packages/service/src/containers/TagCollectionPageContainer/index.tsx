@@ -1,0 +1,2 @@
+import TagCollectionPageContainer from './TagCollectionPageContainer'
+export default TagCollectionPageContainer

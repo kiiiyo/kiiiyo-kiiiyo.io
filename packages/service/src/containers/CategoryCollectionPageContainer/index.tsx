@@ -1,0 +1,2 @@
+import CategoryCollectionPageContainer from './CategoryCollectionPageContainer'
+export default CategoryCollectionPageContainer
