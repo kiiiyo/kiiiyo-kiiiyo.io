@@ -1,0 +1,13 @@
+{
+  "name": "kiiiyo.io",
+  "version": "1.0.0",
+  "author": "kiiiyo <kiiiyo.jp@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "sv:mc:start": "yarn workspace service mc:start"
+  }
+}
