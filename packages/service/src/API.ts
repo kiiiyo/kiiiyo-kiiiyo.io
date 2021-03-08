@@ -63,6 +63,7 @@ export type Article = {
   description?: string | null,
   createdAt?: string,
   updatedAt?: string,
+  owner?: string | null,
 };
 
 export type UpdateArticleInput = {
@@ -119,6 +120,7 @@ export type CreateArticleMutation = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -135,6 +137,7 @@ export type UpdateArticleMutation = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -151,6 +154,7 @@ export type DeleteArticleMutation = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -166,6 +170,7 @@ export type GetArticleQuery = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -185,9 +190,14 @@ export type ListArticlesQuery = {
       description?: string | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null > | null,
     nextToken?: string | null,
   } | null,
+};
+
+export type OnCreateArticleSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnCreateArticleSubscription = {
@@ -198,7 +208,12 @@ export type OnCreateArticleSubscription = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
+};
+
+export type OnUpdateArticleSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnUpdateArticleSubscription = {
@@ -209,7 +224,12 @@ export type OnUpdateArticleSubscription = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
+};
+
+export type OnDeleteArticleSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnDeleteArticleSubscription = {
@@ -220,5 +240,6 @@ export type OnDeleteArticleSubscription = {
     description?: string | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };

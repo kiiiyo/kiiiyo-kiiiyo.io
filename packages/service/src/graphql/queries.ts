@@ -10,6 +10,7 @@ export const getArticle = /* GraphQL */ `
       description
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -26,6 +27,7 @@ export const listArticles = /* GraphQL */ `
         description
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

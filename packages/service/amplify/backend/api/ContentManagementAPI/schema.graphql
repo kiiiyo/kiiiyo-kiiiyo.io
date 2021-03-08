@@ -1,4 +1,11 @@
-type Article @model {
+type Article
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
   id: ID!
   title: String!
   description: String

@@ -13,6 +13,7 @@ export const createArticle = /* GraphQL */ `
       description
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -27,6 +28,7 @@ export const updateArticle = /* GraphQL */ `
       description
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -41,6 +43,7 @@ export const deleteArticle = /* GraphQL */ `
       description
       createdAt
       updatedAt
+      owner
     }
   }
 `;
