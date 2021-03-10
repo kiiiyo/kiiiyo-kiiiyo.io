@@ -76,6 +76,76 @@ export type DeleteArticleInput = {
   id?: string | null,
 };
 
+export type CreateTagInput = {
+  id?: string | null,
+  slug: string,
+  name: string,
+  description?: string | null,
+  sortOrder: number,
+  status: TagStatusEnum,
+};
+
+export enum TagStatusEnum {
+  PUBLISH = "PUBLISH",
+  PENDING = "PENDING",
+  DRAFT = "DRAFT",
+}
+
+
+export type ModelTagConditionInput = {
+  slug?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  sortOrder?: ModelIntInput | null,
+  status?: ModelTagStatusEnumInput | null,
+  and?: Array< ModelTagConditionInput | null > | null,
+  or?: Array< ModelTagConditionInput | null > | null,
+  not?: ModelTagConditionInput | null,
+};
+
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type ModelTagStatusEnumInput = {
+  eq?: TagStatusEnum | null,
+  ne?: TagStatusEnum | null,
+};
+
+export type Tag = {
+  __typename: "Tag",
+  id?: string,
+  slug?: string,
+  name?: string,
+  description?: string | null,
+  sortOrder?: number,
+  status?: TagStatusEnum,
+  createdAt?: string,
+  updatedAt?: string,
+  owner?: string | null,
+};
+
+export type UpdateTagInput = {
+  id: string,
+  slug?: string | null,
+  name?: string | null,
+  description?: string | null,
+  sortOrder?: number | null,
+  status?: TagStatusEnum | null,
+};
+
+export type DeleteTagInput = {
+  id?: string | null,
+};
+
 export type ModelArticleFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
@@ -104,6 +174,24 @@ export type ModelIDInput = {
 export type ModelArticleConnection = {
   __typename: "ModelArticleConnection",
   items?:  Array<Article | null > | null,
+  nextToken?: string | null,
+};
+
+export type ModelTagFilterInput = {
+  id?: ModelIDInput | null,
+  slug?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  sortOrder?: ModelIntInput | null,
+  status?: ModelTagStatusEnumInput | null,
+  and?: Array< ModelTagFilterInput | null > | null,
+  or?: Array< ModelTagFilterInput | null > | null,
+  not?: ModelTagFilterInput | null,
+};
+
+export type ModelTagConnection = {
+  __typename: "ModelTagConnection",
+  items?:  Array<Tag | null > | null,
   nextToken?: string | null,
 };
 
@@ -158,6 +246,66 @@ export type DeleteArticleMutation = {
   } | null,
 };
 
+export type CreateTagMutationVariables = {
+  input?: CreateTagInput,
+  condition?: ModelTagConditionInput | null,
+};
+
+export type CreateTagMutation = {
+  createTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateTagMutationVariables = {
+  input?: UpdateTagInput,
+  condition?: ModelTagConditionInput | null,
+};
+
+export type UpdateTagMutation = {
+  updateTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteTagMutationVariables = {
+  input?: DeleteTagInput,
+  condition?: ModelTagConditionInput | null,
+};
+
+export type DeleteTagMutation = {
+  deleteTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
 export type GetArticleQueryVariables = {
   id?: string,
 };
@@ -188,6 +336,50 @@ export type ListArticlesQuery = {
       id: string,
       title: string,
       description?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTagQueryVariables = {
+  id?: string,
+};
+
+export type GetTagQuery = {
+  getTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListTagsQueryVariables = {
+  filter?: ModelTagFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTagsQuery = {
+  listTags?:  {
+    __typename: "ModelTagConnection",
+    items?:  Array< {
+      __typename: "Tag",
+      id: string,
+      slug: string,
+      name: string,
+      description?: string | null,
+      sortOrder: number,
+      status: TagStatusEnum,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -238,6 +430,63 @@ export type OnDeleteArticleSubscription = {
     id: string,
     title: string,
     description?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateTagSubscriptionVariables = {
+  owner?: string | null,
+};
+
+export type OnCreateTagSubscription = {
+  onCreateTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateTagSubscriptionVariables = {
+  owner?: string | null,
+};
+
+export type OnUpdateTagSubscription = {
+  onUpdateTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteTagSubscriptionVariables = {
+  owner?: string | null,
+};
+
+export type OnDeleteTagSubscription = {
+  onDeleteTag?:  {
+    __typename: "Tag",
+    id: string,
+    slug: string,
+    name: string,
+    description?: string | null,
+    sortOrder: number,
+    status: TagStatusEnum,
     createdAt: string,
     updatedAt: string,
     owner?: string | null,

@@ -33,3 +33,40 @@ export const listArticles = /* GraphQL */ `
     }
   }
 `;
+export const getTag = /* GraphQL */ `
+  query GetTag($id: ID!) {
+    getTag(id: $id) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listTags = /* GraphQL */ `
+  query ListTags(
+    $filter: ModelTagFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        slug
+        name
+        description
+        sortOrder
+        status
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

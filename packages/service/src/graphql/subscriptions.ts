@@ -38,3 +38,48 @@ export const onDeleteArticle = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTag = /* GraphQL */ `
+  subscription OnCreateTag($owner: String) {
+    onCreateTag(owner: $owner) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateTag = /* GraphQL */ `
+  subscription OnUpdateTag($owner: String) {
+    onUpdateTag(owner: $owner) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteTag = /* GraphQL */ `
+  subscription OnDeleteTag($owner: String) {
+    onDeleteTag(owner: $owner) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

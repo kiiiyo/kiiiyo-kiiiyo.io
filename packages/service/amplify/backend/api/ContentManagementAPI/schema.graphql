@@ -1,3 +1,9 @@
+enum TagStatusEnum {
+  PUBLISH
+  PENDING
+  DRAFT
+}
+
 type Article
   @model
   @auth(
@@ -9,4 +15,20 @@ type Article
   id: ID!
   title: String!
   description: String
+}
+
+type Tag
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [read, create, delete, update] }
+      { allow: public, provider: apiKey, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  slug: String!
+  name: String!
+  description: String
+  sortOrder: Int!
+  status: TagStatusEnum!
 }

@@ -11,6 +11,16 @@ import {
   ListItemText,
   Divider,
   Drawer,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Card,
+  CardHeader,
+  CardContent,
 } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -35,6 +45,16 @@ export {
   ListItemText,
   Divider,
   Drawer,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Card,
+  CardHeader,
+  CardContent,
   // Icon
   MenuIcon,
   AccountCircle,

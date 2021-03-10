@@ -12,7 +12,7 @@ export const TagCollectionPagePresenter: FC = () => {
       headerBar={<Organisms.HeaderBar />}
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
-      タグ
+      <Organisms.TagCollection />
     </Templates.BasicTemplate>
   )
 }

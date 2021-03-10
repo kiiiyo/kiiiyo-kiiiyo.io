@@ -47,3 +47,57 @@ export const deleteArticle = /* GraphQL */ `
     }
   }
 `;
+export const createTag = /* GraphQL */ `
+  mutation CreateTag(
+    $input: CreateTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    createTag(input: $input, condition: $condition) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateTag = /* GraphQL */ `
+  mutation UpdateTag(
+    $input: UpdateTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    updateTag(input: $input, condition: $condition) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteTag = /* GraphQL */ `
+  mutation DeleteTag(
+    $input: DeleteTagInput!
+    $condition: ModelTagConditionInput
+  ) {
+    deleteTag(input: $input, condition: $condition) {
+      id
+      slug
+      name
+      description
+      sortOrder
+      status
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
