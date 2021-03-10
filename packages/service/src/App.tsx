@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { RecoilRoot } from 'recoil'
 import Amplify from 'aws-amplify'
 import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
@@ -26,11 +27,13 @@ function App() {
   return authState === AuthState.SignedIn && user ? (
     <>
       {/* Signed Pages */}
-      <ThemeProvider theme={theme}>
-        <NavigationContextProvider>
-          <PrivateRouter />
-        </NavigationContextProvider>
-      </ThemeProvider>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <NavigationContextProvider>
+            <PrivateRouter />
+          </NavigationContextProvider>
+        </ThemeProvider>
+      </RecoilRoot>
     </>
   ) : (
     <>

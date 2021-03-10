@@ -1,5 +1,6 @@
+import { Domain } from '..'
 import { Repository } from '../index'
 
-export const tagList: () => Promise<any> = async () => {
+export const tagCollection: () => Promise<Domain.Tag.TagCollection> = async () => {
   return await Repository.Tag.tagList()
 }

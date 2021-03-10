@@ -1,18 +1,21 @@
 import React, { FC } from 'react'
 //import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 //
-import { Atoms } from '../../index'
+import { Domain } from '../../../features'
+import { Atoms } from '../../'
 //
 
 /**
  * Interface
  */
 
-export type Actions = {}
+export type State = {
+  tagCollection: Domain.Tag.TagCollection | null
+}
 
-export interface TagCollectionProps {}
-
-export interface TagCollectionPresenterProps {}
+export interface TagCollectionProps {
+  state: State
+}
 
 /**
  * Style
@@ -24,9 +27,11 @@ export interface TagCollectionPresenterProps {}
  * Presenter
  */
 
-export const TagCollectionPresenter: FC<TagCollectionPresenterProps> = () => {
+export const TagCollection: FC<TagCollectionProps> = (props) => {
   //const classes = useStyles()
-
+  const {
+    state: { tagCollection },
+  } = props
   return (
     <Atoms.Paper elevation={2}>
       <Atoms.Card>
@@ -44,12 +49,23 @@ export const TagCollectionPresenter: FC<TagCollectionPresenterProps> = () => {
                 </Atoms.TableRow>
               </Atoms.TableHead>
               <Atoms.TableBody>
-                <Atoms.TableRow>
-                  <Atoms.TableCell>Name</Atoms.TableCell>
-                  <Atoms.TableCell align="right">Slug</Atoms.TableCell>
-                  <Atoms.TableCell align="right">SortOrder</Atoms.TableCell>
-                  <Atoms.TableCell align="right">Status</Atoms.TableCell>
-                </Atoms.TableRow>
+                {tagCollection &&
+                  tagCollection.listTags?.items?.map((tag, index) => {
+                    return (
+                      <Atoms.TableRow key={index}>
+                        <Atoms.TableCell>{tag?.name}</Atoms.TableCell>
+                        <Atoms.TableCell align="right">
+                          {tag?.slug}
+                        </Atoms.TableCell>
+                        <Atoms.TableCell align="right">
+                          {tag?.sortOrder}
+                        </Atoms.TableCell>
+                        <Atoms.TableCell align="right">
+                          {tag?.status}
+                        </Atoms.TableCell>
+                      </Atoms.TableRow>
+                    )
+                  })}
               </Atoms.TableBody>
             </Atoms.Table>
           </Atoms.TableContainer>
@@ -57,14 +73,6 @@ export const TagCollectionPresenter: FC<TagCollectionPresenterProps> = () => {
       </Atoms.Card>
     </Atoms.Paper>
   )
-}
-
-/**
- * Merge
- */
-
-export const TagCollection: FC<TagCollectionProps> = (props) => {
-  return <TagCollectionPresenter />
 }
 
 export default TagCollection

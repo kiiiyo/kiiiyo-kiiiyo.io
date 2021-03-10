@@ -1,18 +1,25 @@
 import { useCallback, useEffect } from 'react'
-import { UseCase } from '../../features'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { UseCase, Store } from '../../features'
 
 export const useTagCollectionContainer = () => {
-  const fetchTagCollection = useCallback(() => {
-    UseCase.Tag.tagList().then((tag) => {
-      console.log(tag)
+  const setTagCollection = useSetRecoilState(Store.Tag.tagCollectionState)
+  const tagCollection = useRecoilValue(Store.Tag.tagCollection)
+
+  const handleFetchTagCollection = useCallback(() => {
+    UseCase.Tag.tagCollection().then((data) => {
+      console.log(data)
+      setTagCollection(data)
     })
-  }, [])
+  }, [setTagCollection])
 
   useEffect(() => {
-    fetchTagCollection()
-  }, [fetchTagCollection])
+    handleFetchTagCollection()
+  }, [handleFetchTagCollection])
 
   return {
-    state: {},
+    state: {
+      tagCollection,
+    },
   }
 }

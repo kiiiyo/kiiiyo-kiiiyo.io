@@ -17,9 +17,12 @@ module.exports = {
     'plugin:prettier/recommended', // Prettier recommended rules
     'plugin:tailwind/recommended', // Tailwind plugin
   ],
+  plugins: ['react-hooks'],
   rules: {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     // Includes .prettierrc.js rules

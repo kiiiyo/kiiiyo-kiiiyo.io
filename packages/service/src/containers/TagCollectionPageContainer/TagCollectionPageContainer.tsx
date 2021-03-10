@@ -4,8 +4,10 @@ import { useTagCollectionContainer } from './hooks'
 import { Pages } from '../../components'
 
 export const TagCollectionPageContainer: FC = (props) => {
-  useTagCollectionContainer()
-  return <Pages.TagCollectionPage />
+  const {
+    state: { tagCollection },
+  } = useTagCollectionContainer()
+  return <Pages.TagCollectionPage state={{ tagCollection }} />
 }
 
 export default TagCollectionPageContainer
