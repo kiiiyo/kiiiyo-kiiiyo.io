@@ -4,15 +4,15 @@ applications:
     phases:
       preBuild:
         commands:
-          - 'nvm use "${VERSION_NODE_12}"'
           - 'yarn install'
       build:
         commands:
-          - npm run mc:build
+          - yarn run mc:build
     artifacts:
-      baseDirectory: /
+      baseDirectory: build
       files:
         - '**/*'
     cache:
-      paths: []
+      paths:
+        - node_modules/**/*
     appRoot: packages/service
