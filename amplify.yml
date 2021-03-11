@@ -1,0 +1,18 @@
+version: 1
+applications:
+  - appRoot: packages/service
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - 'yarn install'
+        build:
+          commands:
+            - 'yarn run mc:build'
+      artifacts:
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - 'node_modules/**/*'
