@@ -3,6 +3,6 @@ import SinglePageHeader from './SinglePageHeader'
 import Sidebar from './Sidebar'
 
 import TagCollection from './TagCollection'
-import TagForm from './TagForm'
+import TagCreateForm from './TagCreateForm'
 
-export { HeaderBar, SinglePageHeader, Sidebar, TagCollection, TagForm }
+export { HeaderBar, SinglePageHeader, Sidebar, TagCollection, TagCreateForm }

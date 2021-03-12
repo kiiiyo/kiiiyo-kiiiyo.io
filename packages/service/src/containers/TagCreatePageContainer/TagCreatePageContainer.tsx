@@ -4,8 +4,8 @@ import { useTagCreatePageContainer } from './hooks'
 import { Pages } from '../../components'
 
 export const TagCreatePageContainer: FC = (props) => {
-  const { actions } = useTagCreatePageContainer()
-  return <Pages.TagCreatePage actions={actions} />
+  const { state, actions } = useTagCreatePageContainer()
+  return <Pages.TagCreatePage state={state} actions={actions} />
 }
 
 export default TagCreatePageContainer
