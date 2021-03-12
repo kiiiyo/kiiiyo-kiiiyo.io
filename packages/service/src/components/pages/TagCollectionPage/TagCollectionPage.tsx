@@ -11,8 +11,13 @@ export type State = {
   tagCollection: Domain.Tag.TagCollection | null
 }
 
+export type Actions = {
+  onGoToCreateClick: () => void
+}
+
 export interface TagCollectionPageProps {
   state: State
+  actions: Actions
 }
 
 /**
@@ -22,6 +27,7 @@ export interface TagCollectionPageProps {
 export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
   const {
     state: { tagCollection },
+    actions: { onGoToCreateClick },
   } = props
   return (
     <Templates.BasicTemplate
@@ -43,9 +49,7 @@ export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
           <Atoms.Button
             variant="outlined"
             startIcon={<Atoms.AddIcon />}
-            onClick={() => {
-              console.log('a')
-            }}
+            onClick={onGoToCreateClick}
           >
             タグ作成
           </Atoms.Button>

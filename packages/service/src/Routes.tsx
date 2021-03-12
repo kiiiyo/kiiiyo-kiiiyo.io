@@ -6,6 +6,7 @@ import {
   ArticleCollectionPageContainer,
   CategoryCollectionPageContainer,
   TagCollectionPageContainer,
+  TagCreatePageContainer,
 } from './containers'
 
 export const PrivateRouter: FC = () => {
@@ -23,6 +24,9 @@ export const PrivateRouter: FC = () => {
       </Route>
       <Route exact path="/tags">
         <TagCollectionPageContainer />
+      </Route>
+      <Route exact path="/tags/create">
+        <TagCreatePageContainer />
       </Route>
       <Route>
         <Redirect to="/" />

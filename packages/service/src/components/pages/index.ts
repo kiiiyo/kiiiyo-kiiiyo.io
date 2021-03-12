@@ -5,10 +5,12 @@ import ArticleCollectionPage from './ArticleCollectionPage'
 import CategoryCollectionPage from './CategoryCollectionPage'
 // Tag
 import TagCollectionPage from './TagCollectionPage'
+import TagCreatePage from './TagCreatePage'
 
 export {
   DashboardPage,
   ArticleCollectionPage,
   CategoryCollectionPage,
   TagCollectionPage,
+  TagCreatePage,
 }
