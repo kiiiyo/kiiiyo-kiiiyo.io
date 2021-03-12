@@ -34,7 +34,11 @@ export const TagCreatePage: FC<TagCreatePageProps> = (props) => {
         actions={{ onGoBackClick }}
       />
       <Atoms.Divider />
-      <Atoms.Container maxWidth="lg">記事追加画面</Atoms.Container>
+      <Atoms.Container maxWidth="lg">
+        <Atoms.Box py={4}>
+          <Organisms.TagForm />
+        </Atoms.Box>
+      </Atoms.Container>
     </Templates.BasicTemplate>
   )
 }

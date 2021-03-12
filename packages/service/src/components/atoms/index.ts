@@ -23,6 +23,9 @@ import {
   CardContent,
   Button,
   Container,
+  Tooltip,
+  CardActions,
+  TextField,
 } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -34,6 +37,7 @@ import FolderIcon from '@material-ui/icons/Folder'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
 import AddIcon from '@material-ui/icons/Add'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import HelpIcon from '@material-ui/icons/Help'
 
 export {
   // Core
@@ -61,6 +65,9 @@ export {
   CardContent,
   Button,
   Container,
+  Tooltip,
+  CardActions,
+  TextField,
   // Icon
   MenuIcon,
   AccountCircle,
@@ -71,4 +78,5 @@ export {
   LocalOfferIcon,
   AddIcon,
   ArrowBackIcon,
+  HelpIcon,
 }

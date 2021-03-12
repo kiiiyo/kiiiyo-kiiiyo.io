@@ -1,6 +1,8 @@
 import HeaderBar from './HeaderBar'
-import Sidebar from './Sidebar'
-import TagCollection from './TagCollection'
 import SinglePageHeader from './SinglePageHeader'
+import Sidebar from './Sidebar'
 
-export { HeaderBar, Sidebar, TagCollection, SinglePageHeader }
+import TagCollection from './TagCollection'
+import TagForm from './TagForm'
+
+export { HeaderBar, SinglePageHeader, Sidebar, TagCollection, TagForm }
