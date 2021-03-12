@@ -33,6 +33,7 @@ import DescriptionIcon from '@material-ui/icons/Description'
 import FolderIcon from '@material-ui/icons/Folder'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
 import AddIcon from '@material-ui/icons/Add'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 export {
   // Core
@@ -69,4 +70,5 @@ export {
   FolderIcon,
   LocalOfferIcon,
   AddIcon,
+  ArrowBackIcon,
 }
