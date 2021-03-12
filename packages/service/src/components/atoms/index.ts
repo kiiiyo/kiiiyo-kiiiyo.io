@@ -21,6 +21,8 @@ import {
   Card,
   CardHeader,
   CardContent,
+  Button,
+  Container,
 } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -30,6 +32,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import DescriptionIcon from '@material-ui/icons/Description'
 import FolderIcon from '@material-ui/icons/Folder'
 import LocalOfferIcon from '@material-ui/icons/LocalOffer'
+import AddIcon from '@material-ui/icons/Add'
 
 export {
   // Core
@@ -55,6 +58,8 @@ export {
   Card,
   CardHeader,
   CardContent,
+  Button,
+  Container,
   // Icon
   MenuIcon,
   AccountCircle,
@@ -63,4 +68,5 @@ export {
   DescriptionIcon,
   FolderIcon,
   LocalOfferIcon,
+  AddIcon,
 }
