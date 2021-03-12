@@ -119,8 +119,7 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
             <Atoms.Box mb={2}>
               <Molecules.FormField
                 state={{
-                  label: 'ユーザー権限',
-                  description: '招待するユーザーの権限を選択してください。',
+                  label: 'Status',
                 }}
               >
                 <Molecules.Select
@@ -136,13 +135,6 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
                     PUBLISH
                   </option>
                 </Molecules.Select>
-                <Atoms.Box mt={1}>
-                  {formErrors.status?.type === 'required' && (
-                    <Atoms.Typography color="error">
-                      ユーザー権限は必須項目です
-                    </Atoms.Typography>
-                  )}
-                </Atoms.Box>
               </Molecules.FormField>
             </Atoms.Box>
           </Atoms.Box>
@@ -156,7 +148,7 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
               disabled={!isSubmit}
               onClick={handleSubmit(onTagCreateFormSubmit)}
             >
-              招待
+              Create
             </Atoms.Button>
           </Atoms.Box>
         </Atoms.CardActions>
