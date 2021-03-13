@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
 import { UseFormMethods } from 'react-hook-form'
+
 //
 import { Domain } from '../../../features'
 import { Atoms, Molecules } from '../..'
+import { useTagCreateFormm } from './hooks'
 
 /**
  * Interface
@@ -17,28 +19,43 @@ export type Actions = {
   handleRegister: UseFormMethods['register']
   handleWatch: UseFormMethods['watch']
   handleSubmit: UseFormMethods['handleSubmit']
-  onTagCreateFormSubmit: (form: Domain.Tag.TagCreateForm) => void
+  handleGetValues: UseFormMethods['getValues']
+  handleReset: UseFormMethods['reset']
+  handleFormSubmit: (form: Domain.Tag.TagCreateForm) => void
+}
+
+export interface TagCreateFormPresenterProps {
+  state: State
+  actions: Actions
 }
 
 export interface TagCreateFormProps {
-  state: State
-  actions: Actions
+  actions: {
+    handleFormSubmit: (form: Domain.Tag.TagCreateForm) => void
+  }
 }
 
 /**
  * Presenter
  */
 
-export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
+export const TagCreateFormPresenter: FC<TagCreateFormPresenterProps> = (
+  props
+) => {
   const {
     state: { formErrors, formState },
-    actions: { handleSubmit, handleRegister, onTagCreateFormSubmit },
+    actions: {
+      handleSubmit,
+      handleRegister,
+      handleFormSubmit,
+      handleGetValues,
+    },
   } = props
 
   const { isDirty, isValid } = formState
   const isSubmit = isDirty === true && isValid === true
 
-  console.log(formState)
+  handleRegister({ name: 'id', type: 'custom' })
 
   return (
     <Atoms.Paper elevation={2}>
@@ -47,6 +64,23 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
         <Atoms.Divider />
         <Atoms.CardContent>
           <Atoms.Box p={1}>
+            <Atoms.Box mb={3}>
+              <Molecules.FormField
+                state={{
+                  label: 'ID',
+                }}
+              >
+                <Atoms.TextField
+                  id="id"
+                  name="id"
+                  variant="outlined"
+                  placeholder="Tag id"
+                  disabled={true}
+                  value={handleGetValues('id')}
+                  fullWidth
+                />
+              </Molecules.FormField>
+            </Atoms.Box>
             <Atoms.Box mb={3}>
               <Molecules.FormField
                 state={{
@@ -146,7 +180,7 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
               variant="contained"
               color="primary"
               disabled={!isSubmit}
-              onClick={handleSubmit(onTagCreateFormSubmit)}
+              onClick={handleSubmit(handleFormSubmit)}
             >
               Create
             </Atoms.Button>
@@ -154,6 +188,39 @@ export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
         </Atoms.CardActions>
       </Atoms.Card>
     </Atoms.Paper>
+  )
+}
+
+/**
+ * Merge
+ */
+
+export const TagCreateForm: FC<TagCreateFormProps> = (props) => {
+  const {
+    actions: { handleFormSubmit },
+  } = props
+  const {
+    state: { formState, formErrors },
+    actions: {
+      handleRegister,
+      handleGetValues,
+      handleWatch,
+      handleSubmit,
+      handleReset,
+    },
+  } = useTagCreateFormm()
+  return (
+    <TagCreateFormPresenter
+      state={{ formState, formErrors }}
+      actions={{
+        handleGetValues,
+        handleRegister,
+        handleWatch,
+        handleSubmit,
+        handleFormSubmit,
+        handleReset,
+      }}
+    />
   )
 }
 

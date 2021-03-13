@@ -1,4 +1,10 @@
-import { Tag, ListTagsQuery, CreateTagInput } from '../../API'
+import {
+  Tag,
+  ListTagsQuery,
+  CreateTagInput,
+  UpdateTagInput,
+  CreateTagMutation,
+} from '../../API'
 import { DeepOmit } from '../../libs/deep-omit'
 //
 export { TagStatusEnum } from '../../API'
@@ -10,3 +16,7 @@ export type TagCollection = DeepOmit<Exclude<ListTagsQuery, null>, '__typename'>
 export type TagCollectionState = TagCollection
 
 export type TagCreateForm = CreateTagInput
+
+export type TagCreateResult = CreateTagMutation
+
+export type TagUpdateForm = UpdateTagInput

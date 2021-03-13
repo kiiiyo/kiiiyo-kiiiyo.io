@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { UseFormMethods } from 'react-hook-form'
 //
 import { Domain } from '../../../features'
 import { Templates, Organisms, Atoms } from '../../../components'
@@ -8,21 +7,14 @@ import { Templates, Organisms, Atoms } from '../../../components'
  * Interface
  */
 
-export type State = {
-  formState: UseFormMethods['formState']
-  formErrors: UseFormMethods['errors']
-}
+//export type State = {}
 
 export type Actions = {
-  handleRegister: UseFormMethods['register']
-  handleWatch: UseFormMethods['watch']
-  handleSubmit: UseFormMethods['handleSubmit']
   onGoBackClick: () => void
-  onTagCreateFormSubmit: (form: Domain.Tag.TagCreateForm) => void
+  onTagFormSubmit: (form: Domain.Tag.TagCreateForm) => void
 }
 
 export interface TagCreatePageProps {
-  state: State
   actions: Actions
 }
 
@@ -32,14 +24,7 @@ export interface TagCreatePageProps {
 
 export const TagCreatePage: FC<TagCreatePageProps> = (props) => {
   const {
-    state: { formState, formErrors },
-    actions: {
-      onGoBackClick,
-      handleRegister,
-      handleWatch,
-      handleSubmit,
-      onTagCreateFormSubmit,
-    },
+    actions: { onGoBackClick, onTagFormSubmit },
   } = props
   return (
     <Templates.BasicTemplate
@@ -54,12 +39,8 @@ export const TagCreatePage: FC<TagCreatePageProps> = (props) => {
       <Atoms.Container maxWidth="lg">
         <Atoms.Box py={4}>
           <Organisms.TagCreateForm
-            state={{ formState, formErrors }}
             actions={{
-              handleRegister,
-              handleWatch,
-              handleSubmit,
-              onTagCreateFormSubmit,
+              handleFormSubmit: onTagFormSubmit,
             }}
           />
         </Atoms.Box>

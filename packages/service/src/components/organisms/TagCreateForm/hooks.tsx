@@ -1,33 +1,40 @@
 import { useForm, UseFormMethods } from 'react-hook-form'
+import { v4 as uuid } from 'uuid'
 //
 import { Domain } from '../../../features'
 
-export type TagCreateFormPresenter = {
+export type TagCreateFormmPresenter = {
   state: {
     formState: UseFormMethods['formState']
     formErrors: UseFormMethods['errors']
   }
   actions: {
     handleRegister: UseFormMethods['register']
+    handleGetValues: UseFormMethods['getValues']
     handleWatch: UseFormMethods['watch']
     handleSubmit: UseFormMethods['handleSubmit']
+    handleReset: UseFormMethods['reset']
   }
 }
 
-export const useTagCreateForm = () => {
+export const useTagCreateFormm = () => {
+  const id = uuid()
   const {
+    formState,
+    errors,
     register,
     handleSubmit,
-    formState,
+    getValues,
     watch,
-    errors,
+    reset,
   } = useForm<Domain.Tag.TagCreateForm>({
     mode: 'onChange',
     defaultValues: {
+      id: id,
       name: '',
       slug: '',
       description: '',
-      sortOrder: 100,
+      sortOrder: 10,
       status: undefined,
     },
   })
@@ -38,9 +45,11 @@ export const useTagCreateForm = () => {
       formErrors: errors,
     },
     actions: {
+      handleGetValues: getValues,
       handleRegister: register,
       handleWatch: watch,
+      handleReset: reset,
       handleSubmit,
     },
-  } as TagCreateFormPresenter
+  } as TagCreateFormmPresenter
 }

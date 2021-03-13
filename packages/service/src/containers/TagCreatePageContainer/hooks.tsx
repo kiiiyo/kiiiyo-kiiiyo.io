@@ -1,8 +1,7 @@
 import { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
-import { v4 as uuid } from 'uuid'
-//import { UseCase, Store } from '../../features'
-import { useTagCreateForm } from '../../components/organisms/TagCreateForm/hooks'
+
+import { UseCase } from '../../features'
 import { Domain } from '../../features'
 
 export const useTagCreatePageContainer = () => {
@@ -10,26 +9,18 @@ export const useTagCreatePageContainer = () => {
    * Hooks
    */
 
-  const {
-    state: { formState, formErrors },
-    actions: { handleSubmit, handleRegister, handleWatch },
-  } = useTagCreateForm()
-
   /**
    * Variables
    */
 
   const history = useHistory()
 
-  const onTagCreateFormSubmit = useCallback(
-    (form: Domain.Tag.TagCreateForm) => {
-      const id = uuid()
-      const tagStatus = { ...form, id }
-
-      console.log(tagStatus)
-    },
-    []
-  )
+  const onTagFormSubmit = useCallback((form: Domain.Tag.TagCreateForm) => {
+    UseCase.Tag.createTag(form).then((data) => {
+      console.log(data)
+      history.push('/tags')
+    })
+  }, [])
 
   /**
    * Actions
@@ -40,13 +31,9 @@ export const useTagCreatePageContainer = () => {
   }, [history])
 
   return {
-    state: { formState, formErrors },
     actions: {
       onGoBackClick,
-      onTagCreateFormSubmit,
-      handleSubmit,
-      handleRegister,
-      handleWatch,
+      onTagFormSubmit,
     },
   }
 }
