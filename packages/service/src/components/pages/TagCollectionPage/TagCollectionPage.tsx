@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 //
 import { Domain } from '../../../features'
-import { Templates, Organisms } from '../../../components'
+import { Templates, Organisms, Atoms } from '../../../components'
 
 /**
  * Interface
@@ -11,8 +11,13 @@ export type State = {
   tagCollection: Domain.Tag.TagCollection | null
 }
 
+export type Actions = {
+  onGoToCreateClick: () => void
+}
+
 export interface TagCollectionPageProps {
   state: State
+  actions: Actions
 }
 
 /**
@@ -22,13 +27,41 @@ export interface TagCollectionPageProps {
 export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
   const {
     state: { tagCollection },
+    actions: { onGoToCreateClick },
   } = props
   return (
     <Templates.BasicTemplate
       headerBar={<Organisms.HeaderBar />}
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
-      <Organisms.TagCollection state={{ tagCollection }} />
+      {/* Page Header  */}
+      <Atoms.Box
+        p={3}
+        display="flex"
+        flexDirection="row"
+        justifyContent="start"
+      >
+        <Atoms.Typography variant="h5" component="h1">
+          タグ管理
+        </Atoms.Typography>
+
+        <Atoms.Box ml="auto">
+          <Atoms.Button
+            variant="outlined"
+            startIcon={<Atoms.AddIcon />}
+            onClick={onGoToCreateClick}
+          >
+            タグ作成
+          </Atoms.Button>
+        </Atoms.Box>
+      </Atoms.Box>
+      <Atoms.Divider />
+      {/* Page Body */}
+      <Atoms.Container maxWidth="lg">
+        <Atoms.Box py={4}>
+          <Organisms.TagCollection state={{ tagCollection }} />
+        </Atoms.Box>
+      </Atoms.Container>
     </Templates.BasicTemplate>
   )
 }

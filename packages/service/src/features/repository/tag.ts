@@ -1,14 +1,36 @@
-import GraphQLAPI, { GRAPHQL_AUTH_MODE } from '@aws-amplify/api-graphql'
+import { API } from 'aws-amplify'
+import { GRAPHQL_AUTH_MODE } from '@aws-amplify/api-graphql'
 //
 import { Domain } from '..'
-import { listTags } from '../../graphql/queries'
+import * as queries from '../../graphql/queries'
+import * as mutations from '../../graphql/mutations'
 
 export const tagList: () => Promise<Domain.Tag.TagCollection> = async () => {
   try {
-    const response = (await GraphQLAPI.graphql({
-      query: listTags,
+    const response = (await API.graphql({
+      query: queries.listTags,
       authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
     })) as { data: Domain.Tag.TagCollection }
+    const { data } = response
+    return data
+  } catch (err) {
+    //
+    return err
+  }
+}
+
+export const createTag: (
+  form: Domain.Tag.TagCreateForm
+) => Promise<any> = async (form: Domain.Tag.TagCreateForm) => {
+  console.log('createTag', form)
+  try {
+    const response = (await API.graphql({
+      query: mutations.createTag,
+      variables: {
+        input: form,
+      },
+      authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+    })) as { data: Domain.Tag.TagCreateResult }
     const { data } = response
     return data
   } catch (err) {
