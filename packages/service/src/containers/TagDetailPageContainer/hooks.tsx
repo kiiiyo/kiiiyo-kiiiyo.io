@@ -1,7 +1,7 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-//import { UseCase, Store } from '../../features'
+import { Domain, UseCase } from '../../features'
 
 type TagDetailUrlParams = {
   tagId: string
@@ -11,19 +11,19 @@ export const useTagDetailContainer = () => {
   /**
    * Variables
    */
+  const [tag, setTag] = useState<Domain.Tag.TagDetail | null>(null)
   const { tagId } = useParams<TagDetailUrlParams>()
   const history = useHistory()
 
-  // const handleFetchTagCollection = useCallback(() => {
-  //   UseCase.Tag.tagCollection().then((data) => {
-  //     console.log(data)
-  //     setTagCollection(data)
-  //   })
-  // }, [setTagCollection])
+  const handleFetchTag = useCallback(() => {
+    UseCase.Tag.tagDetail(tagId).then((data) => {
+      setTag(data)
+    })
+  }, [tagId, setTag])
 
-  // useEffect(() => {
-  //   handleFetchTagCollection()
-  // }, [handleFetchTagCollection])
+  useEffect(() => {
+    handleFetchTag()
+  }, [handleFetchTag])
 
   /**
    * Actions
@@ -33,6 +33,9 @@ export const useTagDetailContainer = () => {
     history.push(`/tags`)
   }, [history])
   return {
+    state: {
+      tag,
+    },
     actions: {
       onGoBackClick,
     },

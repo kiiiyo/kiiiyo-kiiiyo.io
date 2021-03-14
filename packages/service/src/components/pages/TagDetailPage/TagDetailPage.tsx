@@ -7,13 +7,16 @@ import { Templates, Organisms, Atoms } from '../../../components'
  * Interface
  */
 
-//export type State = {}
+export type State = {
+  tag: Domain.Tag.TagDetail | null
+}
 
 export type Actions = {
   onGoBackClick: () => void
 }
 
 export interface TagDetailPageProps {
+  state: State
   actions: Actions
 }
 
@@ -23,6 +26,7 @@ export interface TagDetailPageProps {
 
 export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
   const {
+    state: { tag },
     actions: { onGoBackClick },
   } = props
   return (
@@ -31,13 +35,13 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
       <Organisms.SinglePageHeader
-        state={{ pageTitle: 'タグ' }}
+        state={{ pageTitle: 'Tag detail' }}
         actions={{ onGoBackClick }}
       />
       <Atoms.Divider />
       <Atoms.Container maxWidth="lg">
         <Atoms.Box py={4}>
-          <Organisms.TagDetail state={{}} />
+          {tag && <Organisms.TagDetail state={{ tag }} />}
         </Atoms.Box>
       </Atoms.Container>
     </Templates.BasicTemplate>
