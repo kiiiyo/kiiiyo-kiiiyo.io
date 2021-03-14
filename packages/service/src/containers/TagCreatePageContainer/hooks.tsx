@@ -15,12 +15,14 @@ export const useTagCreatePageContainer = () => {
 
   const history = useHistory()
 
-  const onTagFormSubmit = useCallback((form: Domain.Tag.TagCreateForm) => {
-    UseCase.Tag.createTag(form).then((data) => {
-      console.log(data)
-      history.push('/tags')
-    })
-  }, [])
+  const onTagFormSubmit = useCallback(
+    (form: Domain.Tag.TagCreateForm) => {
+      UseCase.Tag.createTag(form).then((data) => {
+        history.push('/tags')
+      })
+    },
+    [history]
+  )
 
   /**
    * Actions

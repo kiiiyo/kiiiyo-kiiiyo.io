@@ -4,5 +4,13 @@ import Sidebar from './Sidebar'
 
 import TagCollection from './TagCollection'
 import TagCreateForm from './TagCreateForm'
+import TagDetail from './TagDetail'
 
-export { HeaderBar, SinglePageHeader, Sidebar, TagCollection, TagCreateForm }
+export {
+  HeaderBar,
+  SinglePageHeader,
+  Sidebar,
+  TagCollection,
+  TagCreateForm,
+  TagDetail,
+}

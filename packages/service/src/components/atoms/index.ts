@@ -26,6 +26,7 @@ import {
   Tooltip,
   CardActions,
   TextField,
+  Link,
 } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
@@ -68,6 +69,7 @@ export {
   Tooltip,
   CardActions,
   TextField,
+  Link,
   // Icon
   MenuIcon,
   AccountCircle,

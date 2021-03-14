@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { UseFormMethods } from 'react-hook-form'
 
 //
@@ -43,7 +43,7 @@ export const TagCreateFormPresenter: FC<TagCreateFormPresenterProps> = (
   props
 ) => {
   const {
-    state: { formErrors, formState },
+    state: { formState },
     actions: {
       handleSubmit,
       handleRegister,
