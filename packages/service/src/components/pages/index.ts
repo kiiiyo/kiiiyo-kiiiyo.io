@@ -6,6 +6,7 @@ import CategoryCollectionPage from './CategoryCollectionPage'
 // Tag
 import TagCollectionPage from './TagCollectionPage'
 import TagCreatePage from './TagCreatePage'
+import TagDetailPage from './TagDetailPage'
 
 export {
   DashboardPage,
@@ -13,4 +14,5 @@ export {
   CategoryCollectionPage,
   TagCollectionPage,
   TagCreatePage,
+  TagDetailPage,
 }

@@ -1,5 +1,6 @@
 import {
   Tag,
+  GetTagQuery,
   ListTagsQuery,
   CreateTagInput,
   UpdateTagInput,
@@ -20,3 +21,5 @@ export type TagCreateForm = CreateTagInput
 export type TagCreateResult = CreateTagMutation
 
 export type TagUpdateForm = UpdateTagInput
+
+export type TagDetail = DeepOmit<Exclude<GetTagQuery, null>, '__typename'>

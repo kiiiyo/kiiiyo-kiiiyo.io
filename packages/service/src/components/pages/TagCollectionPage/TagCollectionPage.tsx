@@ -13,6 +13,7 @@ export type State = {
 
 export type Actions = {
   onGoToCreateClick: () => void
+  onGoToDetailClick: (id: string) => void
 }
 
 export interface TagCollectionPageProps {
@@ -27,7 +28,7 @@ export interface TagCollectionPageProps {
 export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
   const {
     state: { tagCollection },
-    actions: { onGoToCreateClick },
+    actions: { onGoToCreateClick, onGoToDetailClick },
   } = props
   return (
     <Templates.BasicTemplate
@@ -59,7 +60,10 @@ export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
       {/* Page Body */}
       <Atoms.Container maxWidth="lg">
         <Atoms.Box py={4}>
-          <Organisms.TagCollection state={{ tagCollection }} />
+          <Organisms.TagCollection
+            state={{ tagCollection }}
+            actions={{ onGoToDetailClick }}
+          />
         </Atoms.Box>
       </Atoms.Container>
     </Templates.BasicTemplate>

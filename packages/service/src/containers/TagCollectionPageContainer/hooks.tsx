@@ -18,6 +18,10 @@ export const useTagCollectionContainer = () => {
     })
   }, [setTagCollection])
 
+  useEffect(() => {
+    handleFetchTagCollection()
+  }, [handleFetchTagCollection])
+
   /**
    * Actions
    */
@@ -26,16 +30,19 @@ export const useTagCollectionContainer = () => {
     history.push('/tags/create')
   }, [history])
 
-  useEffect(() => {
-    handleFetchTagCollection()
-  }, [handleFetchTagCollection])
-
+  const onGoToDetailClick = useCallback(
+    (id: string) => {
+      history.push(`/tags/${id}`)
+    },
+    [history]
+  )
   return {
     state: {
       tagCollection,
     },
     actions: {
       onGoToCreateClick,
+      onGoToDetailClick,
     },
   }
 }

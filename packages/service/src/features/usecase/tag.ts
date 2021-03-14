@@ -5,6 +5,12 @@ export const tagCollection: () => Promise<Domain.Tag.TagCollection> = async () =
   return await Repository.Tag.tagList()
 }
 
+export const tagDetail: (id: string) => Promise<Domain.Tag.TagDetail> = async (
+  id: string
+) => {
+  return await Repository.Tag.tagDetail(id)
+}
+
 export const createTag: (
   form: Domain.Tag.TagCreateForm
 ) => Promise<any> = async (form: Domain.Tag.TagCreateForm) => {
