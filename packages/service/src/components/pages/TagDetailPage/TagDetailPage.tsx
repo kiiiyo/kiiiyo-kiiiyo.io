@@ -35,7 +35,23 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
       <Organisms.SinglePageHeader
-        state={{ pageTitle: 'Tag detail' }}
+        state={{
+          pageTitle: 'Tag detail',
+          actionBar: (
+            <>
+              <Atoms.Box mr={2}>
+                <Atoms.Button variant="outlined" startIcon={<Atoms.AddIcon />}>
+                  削除
+                </Atoms.Button>
+              </Atoms.Box>
+              <Atoms.Box>
+                <Atoms.Button variant="outlined" startIcon={<Atoms.AddIcon />}>
+                  編集
+                </Atoms.Button>
+              </Atoms.Box>
+            </>
+          ),
+        }}
         actions={{ onGoBackClick }}
       />
       <Atoms.Divider />

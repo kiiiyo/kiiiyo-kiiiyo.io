@@ -26,11 +26,11 @@ export const PrivateRouter: FC = () => {
       <Route exact path="/tags">
         <TagCollectionPageContainer />
       </Route>
-      <Route exact path="/tags/:tagId">
-        <TagDetailPageContainer />
-      </Route>
       <Route exact path="/tags/create">
         <TagCreatePageContainer />
+      </Route>
+      <Route exact path="/tags/:tagId">
+        <TagDetailPageContainer />
       </Route>
       <Route>
         <Redirect to="/" />
