@@ -1,7 +1,7 @@
 import { FC } from 'react'
 //
 import { Domain } from '../../../features'
-import { Templates, Organisms, Atoms } from '../../../components'
+import { Templates, Organisms, Molecules, Atoms } from '../../../components'
 
 /**
  * Interface
@@ -9,11 +9,13 @@ import { Templates, Organisms, Atoms } from '../../../components'
 
 export type State = {
   tag: Domain.Tag.TagDetail | null
+  notice: Domain.Notice.Entity | null
 }
 
 export type Actions = {
   onGoBackClick: () => void
   onDeleteClick: () => void
+  handleHideNotice: () => void
 }
 
 export interface TagDetailPageProps {
@@ -27,8 +29,8 @@ export interface TagDetailPageProps {
 
 export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
   const {
-    state: { tag },
-    actions: { onGoBackClick, onDeleteClick },
+    state: { tag, notice },
+    actions: { onGoBackClick, onDeleteClick, handleHideNotice },
   } = props
   return (
     <Templates.BasicTemplate
@@ -63,6 +65,13 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
       />
       <Atoms.Divider />
       <Atoms.Container maxWidth="lg">
+        {notice && (
+          <Molecules.Toast
+            state={{ open: true, type: notice.type, message: notice.message }}
+            actions={{ handleClose: handleHideNotice }}
+          />
+        )}
+
         <Atoms.Box py={4}>
           {tag && <Organisms.TagDetail state={{ tag }} />}
         </Atoms.Box>

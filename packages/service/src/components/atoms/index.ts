@@ -27,7 +27,10 @@ import {
   CardActions,
   TextField,
   Link,
+  Snackbar,
 } from '@material-ui/core'
+
+import MuiAlert from '@material-ui/lab/Alert'
 
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
@@ -70,6 +73,8 @@ export {
   CardActions,
   TextField,
   Link,
+  Snackbar,
+  MuiAlert,
   // Icon
   MenuIcon,
   AccountCircle,
