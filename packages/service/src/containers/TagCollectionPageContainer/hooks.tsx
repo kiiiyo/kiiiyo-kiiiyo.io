@@ -1,9 +1,13 @@
 import { useCallback, useEffect } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useHistory } from 'react-router-dom'
-import { UseCase, Store } from '../../features'
+import { UseCase, Hooks, Store } from '../../features'
 
 export const useTagCollectionContainer = () => {
+  const {
+    state: { notice },
+    actions: { handleHideNotice },
+  } = Hooks.Notice.useNotice()
   /**
    * Variables
    */
@@ -39,10 +43,12 @@ export const useTagCollectionContainer = () => {
   return {
     state: {
       tagCollection,
+      notice,
     },
     actions: {
       onGoToCreateClick,
       onGoToDetailClick,
+      handleHideNotice,
     },
   }
 }

@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { Domain, UseCase } from '../../features'
+import { Domain, Hooks, UseCase } from '../../features'
 
 type TagDetailUrlParams = {
   tagId: string
 }
 
 export const useTagDetailContainer = () => {
+  const {
+    state: { notice },
+    actions: { handleHideNotice, handleShowNotice },
+  } = Hooks.Notice.useNotice()
   /**
    * Variables
    */
@@ -30,10 +34,21 @@ export const useTagDetailContainer = () => {
    */
 
   const onDeleteClick = useCallback(() => {
-    UseCase.Tag.deleteTag(tagId).then((data) => {
-      history.push('/tags')
-    })
-  }, [tagId, history])
+    UseCase.Tag.deleteTag(tagId)
+      .then((data) => {
+        handleShowNotice({
+          type: 'success',
+          message: 'Tag delete.',
+        })
+        history.push('/tags')
+      })
+      .catch(() => {
+        handleShowNotice({
+          type: 'error',
+          message: 'Failed to delete tag.',
+        })
+      })
+  }, [tagId, history, handleShowNotice])
 
   const onGoBackClick = useCallback(() => {
     history.push(`/tags`)
@@ -42,10 +57,12 @@ export const useTagDetailContainer = () => {
   return {
     state: {
       tag,
+      notice,
     },
     actions: {
       onGoBackClick,
       onDeleteClick,
+      handleHideNotice,
     },
   }
 }

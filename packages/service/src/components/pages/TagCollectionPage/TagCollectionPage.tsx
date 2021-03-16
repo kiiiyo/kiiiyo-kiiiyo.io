@@ -1,19 +1,21 @@
 import React, { FC } from 'react'
 //
 import { Domain } from '../../../features'
-import { Templates, Organisms, Atoms } from '../../../components'
+import { Templates, Organisms, Molecules, Atoms } from '../../../components'
 
 /**
  * Interface
  */
 
 export type State = {
+  notice: Domain.Notice.Entity | null
   tagCollection: Domain.Tag.TagCollection | null
 }
 
 export type Actions = {
   onGoToCreateClick: () => void
   onGoToDetailClick: (id: string) => void
+  handleHideNotice: () => void
 }
 
 export interface TagCollectionPageProps {
@@ -27,8 +29,8 @@ export interface TagCollectionPageProps {
 
 export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
   const {
-    state: { tagCollection },
-    actions: { onGoToCreateClick, onGoToDetailClick },
+    state: { tagCollection, notice },
+    actions: { onGoToCreateClick, onGoToDetailClick, handleHideNotice },
   } = props
   return (
     <Templates.BasicTemplate
@@ -59,6 +61,12 @@ export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
       <Atoms.Divider />
       {/* Page Body */}
       <Atoms.Container maxWidth="lg">
+        {notice && (
+          <Molecules.Toast
+            state={{ open: true, type: notice.type, message: notice.message }}
+            actions={{ handleClose: handleHideNotice }}
+          />
+        )}
         <Atoms.Box py={4}>
           <Organisms.TagCollection
             state={{ tagCollection }}
