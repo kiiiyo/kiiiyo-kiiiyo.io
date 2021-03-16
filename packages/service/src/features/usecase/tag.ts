@@ -16,3 +16,9 @@ export const createTag: (
 ) => Promise<any> = async (form: Domain.Tag.TagCreateForm) => {
   return await Repository.Tag.createTag(form)
 }
+
+export const deleteTag: (
+  id: string
+) => Promise<Domain.Tag.TagDeleteResult> = async (id: string) => {
+  return await Repository.Tag.deleteTag(id)
+}

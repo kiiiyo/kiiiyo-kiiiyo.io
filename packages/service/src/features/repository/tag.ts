@@ -22,7 +22,6 @@ export const tagList: () => Promise<Domain.Tag.TagCollection> = async () => {
 export const tagDetail: (id: string) => Promise<Domain.Tag.TagDetail> = async (
   id: string
 ) => {
-  console.log(id)
   try {
     const response = (await API.graphql({
       query: queries.getTag,
@@ -49,6 +48,25 @@ export const createTag: (
       },
       authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
     })) as { data: Domain.Tag.TagCreateResult }
+    const { data } = response
+    return data
+  } catch (err) {
+    //
+    return err
+  }
+}
+
+export const deleteTag: (
+  id: string
+) => Promise<Domain.Tag.TagDeleteResult> = async (id: string) => {
+  try {
+    const response = (await API.graphql({
+      query: mutations.deleteTag,
+      variables: {
+        input: { id },
+      },
+      authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+    })) as { data: Domain.Tag.TagDeleteResult }
     const { data } = response
     return data
   } catch (err) {

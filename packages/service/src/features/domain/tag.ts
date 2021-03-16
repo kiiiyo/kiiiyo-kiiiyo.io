@@ -5,6 +5,7 @@ import {
   CreateTagInput,
   UpdateTagInput,
   CreateTagMutation,
+  DeleteTagMutation,
 } from '../../API'
 import { DeepOmit } from '../../libs/deep-omit'
 //
@@ -19,6 +20,8 @@ export type TagCollectionState = TagCollection
 export type TagCreateForm = CreateTagInput
 
 export type TagCreateResult = CreateTagMutation
+
+export type TagDeleteResult = DeleteTagMutation
 
 export type TagUpdateForm = UpdateTagInput
 
