@@ -13,6 +13,7 @@ export type State = {
 
 export type Actions = {
   onGoBackClick: () => void
+  onDeleteClick: () => void
 }
 
 export interface TagDetailPageProps {
@@ -27,7 +28,7 @@ export interface TagDetailPageProps {
 export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
   const {
     state: { tag },
-    actions: { onGoBackClick },
+    actions: { onGoBackClick, onDeleteClick },
   } = props
   return (
     <Templates.BasicTemplate
@@ -40,7 +41,13 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
           actionBar: (
             <>
               <Atoms.Box mr={2}>
-                <Atoms.Button variant="outlined" startIcon={<Atoms.AddIcon />}>
+                <Atoms.Button
+                  variant="outlined"
+                  startIcon={<Atoms.AddIcon />}
+                  onClick={() => {
+                    onDeleteClick()
+                  }}
+                >
                   削除
                 </Atoms.Button>
               </Atoms.Box>

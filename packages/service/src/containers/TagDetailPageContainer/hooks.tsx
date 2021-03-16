@@ -29,15 +29,23 @@ export const useTagDetailContainer = () => {
    * Actions
    */
 
+  const onDeleteClick = useCallback(() => {
+    UseCase.Tag.deleteTag(tagId).then((data) => {
+      history.push('/tags')
+    })
+  }, [tagId, history])
+
   const onGoBackClick = useCallback(() => {
     history.push(`/tags`)
   }, [history])
+
   return {
     state: {
       tag,
     },
     actions: {
       onGoBackClick,
+      onDeleteClick,
     },
   }
 }
