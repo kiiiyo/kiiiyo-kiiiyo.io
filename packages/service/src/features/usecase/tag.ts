@@ -22,3 +22,11 @@ export const deleteTag: (
 ) => Promise<Domain.Tag.TagDeleteResult> = async (id: string) => {
   return await Repository.Tag.deleteTag(id)
 }
+
+export const updateTag: (
+  form: Domain.Tag.TagUpdateForm
+) => Promise<Domain.Tag.TagUpdateResult> = async (
+  form: Domain.Tag.TagUpdateForm
+) => {
+  return await Repository.Tag.updateTag(form)
+}
