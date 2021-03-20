@@ -39,7 +39,6 @@ export const tagDetail: (id: string) => Promise<Domain.Tag.TagDetail> = async (
 export const createTag: (
   form: Domain.Tag.TagCreateForm
 ) => Promise<any> = async (form: Domain.Tag.TagCreateForm) => {
-  console.log('createTag', form)
   try {
     const response = (await API.graphql({
       query: mutations.createTag,
@@ -67,6 +66,25 @@ export const deleteTag: (
       },
       authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
     })) as { data: Domain.Tag.TagDeleteResult }
+    const { data } = response
+    return data
+  } catch (err) {
+    //
+    return err
+  }
+}
+
+export const updateTag: (
+  form: Domain.Tag.TagUpdateForm
+) => Promise<any> = async (form: Domain.Tag.TagUpdateForm) => {
+  try {
+    const response = (await API.graphql({
+      query: mutations.updateTag,
+      variables: {
+        input: form,
+      },
+      authMode: GRAPHQL_AUTH_MODE.AMAZON_COGNITO_USER_POOLS,
+    })) as { data: Domain.Tag.TagCreateResult }
     const { data } = response
     return data
   } catch (err) {

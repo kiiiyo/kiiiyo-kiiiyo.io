@@ -5,6 +5,7 @@ import Sidebar from './Sidebar'
 import TagCollection from './TagCollection'
 import TagCreateForm from './TagCreateForm'
 import TagDetail from './TagDetail'
+import TagUpdateForm from './TagUpdateForm'
 
 export {
   HeaderBar,
@@ -13,4 +14,5 @@ export {
   TagCollection,
   TagCreateForm,
   TagDetail,
+  TagUpdateForm,
 }

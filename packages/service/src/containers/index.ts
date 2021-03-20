@@ -5,6 +5,7 @@ import CategoryCollectionPageContainer from './CategoryCollectionPageContainer'
 import TagCollectionPageContainer from './TagCollectionPageContainer'
 import TagCreatePageContainer from './TagCreatePageContainer'
 import TagDetailPageContainer from './TagDetailPageContainer'
+import TagUpdatePageContainer from './TagUpdatePageContainer'
 
 export {
   DashboardPageContainer,
@@ -13,4 +14,5 @@ export {
   TagCollectionPageContainer,
   TagCreatePageContainer,
   TagDetailPageContainer,
+  TagUpdatePageContainer,
 }

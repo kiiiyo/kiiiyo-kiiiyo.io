@@ -50,6 +50,10 @@ export const useTagDetailContainer = () => {
       })
   }, [tagId, history, handleShowNotice])
 
+  const onGoUpdateClick = useCallback(() => {
+    history.push(`/tags/${tagId}/edit`)
+  }, [tagId, history])
+
   const onGoBackClick = useCallback(() => {
     history.push(`/tags`)
   }, [history])
@@ -61,6 +65,7 @@ export const useTagDetailContainer = () => {
     },
     actions: {
       onGoBackClick,
+      onGoUpdateClick,
       onDeleteClick,
       handleHideNotice,
     },
