@@ -11,7 +11,13 @@ import { PrivateRouter } from './Routes'
 import { config } from './libs/amplify/config'
 
 Amplify.configure(config)
-const theme = createMuiTheme({})
+const theme = createMuiTheme({
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+  },
+})
 
 function App() {
   const [authState, setAuthState] = useState<any>(null)

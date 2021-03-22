@@ -12,6 +12,12 @@ export const useTagDetailContainer = () => {
     state: { notice },
     actions: { handleHideNotice, handleShowNotice },
   } = Hooks.Notice.useNotice()
+
+  const {
+    state: { dialogDisplayCondition },
+    actions: { handleHideDialog, handleShowDialog },
+  } = Hooks.Dialog.useDialog()
+
   /**
    * Variables
    */
@@ -62,12 +68,15 @@ export const useTagDetailContainer = () => {
     state: {
       tag,
       notice,
+      dialogDisplayCondition,
     },
     actions: {
       onGoBackClick,
       onGoUpdateClick,
       onDeleteClick,
       handleHideNotice,
+      handleHideDialog,
+      handleShowDialog,
     },
   }
 }

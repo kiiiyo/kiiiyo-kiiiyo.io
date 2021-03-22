@@ -32,7 +32,7 @@ export const TagCreatePage: FC<TagCreatePageProps> = (props) => {
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
       <Organisms.SinglePageHeader
-        state={{ pageTitle: 'タグ作成' }}
+        state={{ pageTitle: 'Tag create' }}
         actions={{ onGoBackClick }}
       />
       <Atoms.Divider />

@@ -41,7 +41,7 @@ export const TagCollection: FC<TagCollectionProps> = (props) => {
   return (
     <Atoms.Paper elevation={2}>
       <Atoms.Card>
-        <Atoms.CardHeader title="タグ一覧" />
+        <Atoms.CardHeader title="Tag collection" />
         <Atoms.Divider />
         <Atoms.CardContent>
           <Atoms.TableContainer>
