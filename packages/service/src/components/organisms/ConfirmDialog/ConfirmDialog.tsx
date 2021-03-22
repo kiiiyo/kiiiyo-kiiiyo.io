@@ -49,12 +49,15 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = (props) => {
       onClose={handleClose}
     >
       {title && <Atoms.DialogTitle>{title}</Atoms.DialogTitle>}
-
+      <Atoms.Divider />
       <Atoms.DialogContent>
-        {description && (
-          <Atoms.DialogContentText>{description}</Atoms.DialogContentText>
-        )}
+        <Atoms.Box pt={3} pb={3}>
+          {description && (
+            <Atoms.DialogContentText>{description}</Atoms.DialogContentText>
+          )}
+        </Atoms.Box>
       </Atoms.DialogContent>
+      <Atoms.Divider />
       <Atoms.DialogActions>
         {handleDisagree && (
           <Atoms.Button

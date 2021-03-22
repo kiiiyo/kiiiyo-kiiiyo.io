@@ -45,7 +45,7 @@ export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
         justifyContent="start"
       >
         <Atoms.Typography variant="h5" component="h1">
-          タグ管理
+          Tag
         </Atoms.Typography>
 
         <Atoms.Box ml="auto">
@@ -54,7 +54,7 @@ export const TagCollectionPage: FC<TagCollectionPageProps> = (props) => {
             startIcon={<Atoms.AddIcon />}
             onClick={onGoToCreateClick}
           >
-            タグ作成
+            Add
           </Atoms.Button>
         </Atoms.Box>
       </Atoms.Box>

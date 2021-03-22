@@ -10,6 +10,7 @@ import { Templates, Organisms, Molecules, Atoms } from '../../../components'
 export type State = {
   tag: Domain.Tag.TagDetail | null
   notice: Domain.Notice.Entity | null
+  dialogDisplayCondition: boolean
 }
 
 export type Actions = {
@@ -17,6 +18,8 @@ export type Actions = {
   onGoUpdateClick: () => void
   onDeleteClick: () => void
   handleHideNotice: () => void
+  handleHideDialog: () => void
+  handleShowDialog: () => void
 }
 
 export interface TagDetailPageProps {
@@ -30,12 +33,14 @@ export interface TagDetailPageProps {
 
 export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
   const {
-    state: { tag, notice },
+    state: { tag, notice, dialogDisplayCondition },
     actions: {
       onGoBackClick,
       onGoUpdateClick,
       onDeleteClick,
       handleHideNotice,
+      handleHideDialog,
+      handleShowDialog,
     },
   } = props
   return (
@@ -43,6 +48,20 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
       headerBar={<Organisms.HeaderBar />}
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
+      <Organisms.ConfirmDialog
+        state={{
+          title: 'Tag delete',
+          description: 'Do you want to remove the tag?',
+          disagreeButtonText: 'Cancel',
+          agreeButtonText: 'OK',
+          displayCondition: dialogDisplayCondition,
+        }}
+        actions={{
+          handleAgree: onDeleteClick,
+          handleDisagree: handleHideDialog,
+          handleClose: handleHideDialog,
+        }}
+      />
       <Organisms.SinglePageHeader
         state={{
           pageTitle: 'Tag detail',
@@ -52,22 +71,18 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
                 <Atoms.Button
                   variant="outlined"
                   startIcon={<Atoms.DeleteIcon />}
-                  onClick={() => {
-                    onDeleteClick()
-                  }}
+                  onClick={handleShowDialog}
                 >
-                  削除
+                  Delete
                 </Atoms.Button>
               </Atoms.Box>
               <Atoms.Box>
                 <Atoms.Button
                   variant="outlined"
                   startIcon={<Atoms.EditIcon />}
-                  onClick={() => {
-                    onGoUpdateClick()
-                  }}
+                  onClick={onGoUpdateClick}
                 >
-                  編集
+                  Edit
                 </Atoms.Button>
               </Atoms.Box>
             </>
