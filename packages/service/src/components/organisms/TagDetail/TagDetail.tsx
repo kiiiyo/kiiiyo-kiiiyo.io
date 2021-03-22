@@ -25,7 +25,7 @@ export const TagDetail: FC<TagDetailProps> = (props) => {
       tag: { getTag },
     },
   } = props
-  console.log(getTag)
+
   return (
     <Atoms.Paper elevation={2}>
       <Atoms.Card>

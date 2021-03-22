@@ -51,7 +51,7 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
               <Atoms.Box mr={2}>
                 <Atoms.Button
                   variant="outlined"
-                  startIcon={<Atoms.AddIcon />}
+                  startIcon={<Atoms.DeleteIcon />}
                   onClick={() => {
                     onDeleteClick()
                   }}
@@ -62,7 +62,7 @@ export const TagDetailPage: FC<TagDetailPageProps> = (props) => {
               <Atoms.Box>
                 <Atoms.Button
                   variant="outlined"
-                  startIcon={<Atoms.AddIcon />}
+                  startIcon={<Atoms.EditIcon />}
                   onClick={() => {
                     onGoUpdateClick()
                   }}

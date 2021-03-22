@@ -28,6 +28,11 @@ import {
   TextField,
   Link,
   Snackbar,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@material-ui/core'
 
 import MuiAlert from '@material-ui/lab/Alert'
@@ -42,6 +47,8 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer'
 import AddIcon from '@material-ui/icons/Add'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import HelpIcon from '@material-ui/icons/Help'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 export {
   // Core
@@ -75,6 +82,11 @@ export {
   Link,
   Snackbar,
   MuiAlert,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   // Icon
   MenuIcon,
   AccountCircle,
@@ -86,4 +98,6 @@ export {
   AddIcon,
   ArrowBackIcon,
   HelpIcon,
+  EditIcon,
+  DeleteIcon,
 }

@@ -17,11 +17,17 @@ export const useTagUpdatePageContainer = () => {
     actions: { handleShowNotice },
   } = Hooks.Notice.useNotice()
 
+  const {
+    state: { dialogDisplayCondition },
+    actions: { handleHideDialog, handleShowDialog },
+  } = Hooks.Dialog.useDialog()
+
   /**
    * Variables
    */
 
   const [tag, setTag] = useState<Domain.Tag.TagDetail | null>(null)
+  const [form, setForm] = useState<Domain.Tag.TagUpdateForm | null>(null)
   const history = useHistory()
   const { tagId } = useParams<TagUpdateUrlParams>()
 
@@ -39,8 +45,8 @@ export const useTagUpdatePageContainer = () => {
    * Actions
    */
 
-  const onTagFormSubmit = useCallback(
-    (form: Domain.Tag.TagUpdateForm) => {
+  const onTagFormSubmit = useCallback(() => {
+    if (form) {
       UseCase.Tag.updateTag(form)
         .then(() => {
           handleShowNotice({
@@ -57,8 +63,15 @@ export const useTagUpdatePageContainer = () => {
         .finally(() => {
           history.push(`/tags/${form.id}`)
         })
+    }
+  }, [form, handleShowNotice, history])
+
+  const onSetForm = useCallback(
+    (form: Domain.Tag.TagUpdateForm) => {
+      setForm(form)
+      handleShowDialog()
     },
-    [history, handleShowNotice]
+    [setForm, handleShowDialog]
   )
 
   const onGoBackClick = useCallback(() => {
@@ -68,10 +81,14 @@ export const useTagUpdatePageContainer = () => {
   return {
     state: {
       tag,
+      dialogDisplayCondition,
     },
     actions: {
+      onSetForm,
       onTagFormSubmit,
       onGoBackClick,
+      handleHideDialog,
+      handleShowDialog,
     },
   }
 }

@@ -9,11 +9,14 @@ import { Templates, Organisms, Atoms } from '../../../components'
 
 export type State = {
   tag: Domain.Tag.TagDetail | null
+  dialogDisplayCondition: boolean
 }
 
 export type Actions = {
-  onTagFormSubmit: (form: Domain.Tag.TagUpdateForm) => void
+  onSetForm: (form: Domain.Tag.TagUpdateForm) => void
+  onTagFormSubmit: () => void
   onGoBackClick: () => void
+  handleHideDialog: () => void
 }
 
 export interface TagUpdatePageProps {
@@ -27,16 +30,29 @@ export interface TagUpdatePageProps {
 
 export const TagUpdatePage: FC<TagUpdatePageProps> = (props) => {
   const {
-    state: { tag },
-    actions: { onGoBackClick, onTagFormSubmit },
+    state: { tag, dialogDisplayCondition },
+    actions: { onGoBackClick, onTagFormSubmit, onSetForm, handleHideDialog },
   } = props
 
-  console.log(tag)
   return (
     <Templates.BasicTemplate
       headerBar={<Organisms.HeaderBar />}
       sidebar={<Organisms.Sidebar state={{ currentMenu: 'TAG' }} />}
     >
+      <Organisms.ConfirmDialog
+        state={{
+          title: 'Tag update',
+          description: 'Do you want to update your tag information?',
+          disagreeButtonText: 'Cancel',
+          agreeButtonText: 'OK',
+          displayCondition: dialogDisplayCondition,
+        }}
+        actions={{
+          handleAgree: onTagFormSubmit,
+          handleDisagree: handleHideDialog,
+          handleClose: handleHideDialog,
+        }}
+      />
       <Organisms.SinglePageHeader
         state={{
           pageTitle: 'Tag update',
@@ -50,7 +66,7 @@ export const TagUpdatePage: FC<TagUpdatePageProps> = (props) => {
             <Organisms.TagUpdateForm
               state={{ tag }}
               actions={{
-                handleFormSubmit: onTagFormSubmit,
+                handleFormSubmit: onSetForm,
               }}
             />
           )}

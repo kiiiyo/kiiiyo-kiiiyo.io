@@ -63,7 +63,7 @@ export const TagUpdateFormPresenter: FC<TagUpdateFormPresenterProps> = (
   return (
     <Atoms.Paper elevation={2}>
       <Atoms.Card>
-        <Atoms.CardHeader title="タグ作成フォーム" />
+        <Atoms.CardHeader title="Tag form" />
         <Atoms.Divider />
         <Atoms.CardContent>
           <Atoms.Box p={1}>
@@ -163,7 +163,7 @@ export const TagUpdateFormPresenter: FC<TagUpdateFormPresenterProps> = (
                   state={{ name: 'status' }}
                   actions={{ ref: handleRegister({ required: true }) }}
                 >
-                  <option value="">選択してください</option>
+                  <option value="">Please select</option>
                   <option value={Domain.Tag.TagStatusEnum.DRAFT}>DRAFT</option>
                   <option value={Domain.Tag.TagStatusEnum.PENDING}>
                     PENDING
