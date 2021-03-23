@@ -1,5 +1,20 @@
 import HeaderBar from './HeaderBar'
+import SinglePageHeader from './SinglePageHeader'
 import Sidebar from './Sidebar'
-import TagCollection from './TagCollection'
+import ConfirmDialog from './ConfirmDialog'
 
-export { HeaderBar, Sidebar, TagCollection }
+import TagCollection from './TagCollection'
+import TagCreateForm from './TagCreateForm'
+import TagDetail from './TagDetail'
+import TagUpdateForm from './TagUpdateForm'
+
+export {
+  HeaderBar,
+  SinglePageHeader,
+  Sidebar,
+  ConfirmDialog,
+  TagCollection,
+  TagCreateForm,
+  TagDetail,
+  TagUpdateForm,
+}

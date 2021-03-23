@@ -13,8 +13,13 @@ export type State = {
   tagCollection: Domain.Tag.TagCollection | null
 }
 
+export type Actions = {
+  onGoToDetailClick: (id: string) => void
+}
+
 export interface TagCollectionProps {
   state: State
+  actions: Actions
 }
 
 /**
@@ -31,11 +36,12 @@ export const TagCollection: FC<TagCollectionProps> = (props) => {
   //const classes = useStyles()
   const {
     state: { tagCollection },
+    actions: { onGoToDetailClick },
   } = props
   return (
     <Atoms.Paper elevation={2}>
       <Atoms.Card>
-        <Atoms.CardHeader title="タグ一覧" />
+        <Atoms.CardHeader title="Tag collection" />
         <Atoms.Divider />
         <Atoms.CardContent>
           <Atoms.TableContainer>
@@ -53,7 +59,15 @@ export const TagCollection: FC<TagCollectionProps> = (props) => {
                   tagCollection.listTags?.items?.map((tag, index) => {
                     return (
                       <Atoms.TableRow key={index}>
-                        <Atoms.TableCell>{tag?.name}</Atoms.TableCell>
+                        <Atoms.TableCell>
+                          <Atoms.Link
+                            onClick={() => {
+                              onGoToDetailClick(tag?.id ?? '')
+                            }}
+                          >
+                            {tag?.name}
+                          </Atoms.Link>
+                        </Atoms.TableCell>
                         <Atoms.TableCell align="right">
                           {tag?.slug}
                         </Atoms.TableCell>
